@@ -29,13 +29,14 @@ void MainWindow::onClosed()
 
 void MainWindow::onTextMessageReceived(QString message)
 {
+	ui->statusBar->showMessage(message);
 	qDebug() << message;
 }
 
 void MainWindow::on_pushButton_connect_clicked()
 {
 	if (!m_webSocket.isValid()) {
-		QString url = "ws://localhost:5000/sock/";
+		QString url = "ws://localhost:8000/sock/";
 		m_webSocket.open(QUrl(url));
 	}
 }
